@@ -1,78 +1,15 @@
-public class InfiniteThreadCycles {
-
+// Main.java
+public class Main {
     public static void main(String[] args) {
+        // Assuming you have created ThreadOne, ThreadThree, and ThreadFour similarly.
+        ThreadOne t1 = new ThreadOne(); 
+        ThreadTwoDynamic t2 = new ThreadTwoDynamic();
+        ThreadThree t3 = new ThreadThree();
+        ThreadFour t4 = new ThreadFour();
         
-        // Thread 1: Print numbers from 1 to infinity.
-        Thread thread1 = new Thread(() -> {
-            int num = 1;
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-                System.out.println("Thread 1: " + num);
-                num++;
-            }
-        });
-
-        // Thread 2: Cycle from A to Z, then from Z to A, and repeat.
-        Thread thread2 = new Thread(() -> {
-            while (true) {
-                // Forward: A to Z
-                for (char ch = 'A'; ch <= 'Z'; ch++) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                    System.out.println("Thread 2: " + ch);
-                }
-                // Backward: Z to A
-                for (char ch = 'Z'; ch >= 'A'; ch--) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                    System.out.println("Thread 2: " + ch);
-                }
-            }
-        });
-
-        // Thread 3: Print negative numbers starting from -1 and decreasing indefinitely.
-        Thread thread3 = new Thread(() -> {
-            int num = -1;
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-                System.out.println("Thread 3: " + num);
-                num--;
-            }
-        });
-
-        // Thread 4: Print a collection of symbols repeatedly.
-        Thread thread4 = new Thread(() -> {
-            char[] symbols = {'#', '%', '$', '*', '+', '-'};
-            while (true) {
-                for (char symbol : symbols) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                    System.out.println("Thread 4: " + symbol);
-                }
-            }
-        });
-
-        // Start all threads.
-        thread1.start();
-        thread2.start();
-        thread3.start();
-        thread4.start();
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
     }
 }
